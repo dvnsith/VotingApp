@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <nav class="navbar navbar-light">
+            <div class="container-fluid">
+              <a class="navbar-brand" style="color:white;" href="https://www.doordash.com/">H 🍔🍣 N G R Y ?</a>
+            </div>
+          </nav>
+        <div id="container">
+        <h2><strong>C h o o s e </strong><br>a<br>m e a l</h2>
+        </div>
+        <div class="row">
+            <div class="col" style="color:white; text-align: center;"> 
+                <h3 class="messageHeading"></h3>
+                <p class="message"></p>
+            </div>
+            <div id="photoCard" class="votes col-md-3 card" style="width: 18rem;">
+                <img id="burger" src="<%= votes[0].srcUrl %>" class="card-img-top" alt="<%= votes[0].altText %>">
+                <div class="card-body vote">
+                <h5 class="card-title title"><%= votes[0].name %></h5>
+               <!-- <button id="vote-button" class="btn btn1" value="<%= votes[0].votes %>">Select</button> -->
+            </div>
+            <button id="vote-button" class="btn btn1" value="<%= votes[0].votes %>">Select</button>
+              
+            </div>
+            <div id="photoCard" class="votes2 col-md-3 card" style="width: 18rem;">
+                <img id="sushi" src="<%= votes[1].srcUrl %>" class="card-img-top" alt="<%= votes[1].altText %>">
+                <div class="card-body vote">
+                <h5 class="card-title2 title"><%= votes[1].name %></h5>
+                <!-- <button id="vote-button2" class="btn btn2" value="<%= votes[1].votes %>">Select</button> -->
+            </div>
+            <button id="vote-button2" class="btn btn2" value="<%= votes[1].votes %>">Select</button>
+               </div>
+            <div class="col">
+            </div>
+        </div>
+    </body>
+   
+    <script src="main.js"></script>
+
+</html>
