@@ -1,0 +1,61 @@
+h2 {
+  color: rgb(245, 193, 96);
+  text-align: center;
+  font-family: sans-serif;
+  margin-top: 15px;
+  margin-bottom: 65px;
+}
+
+body {
+  background-position: center;
+  background-position-y: top;
+  background-image: url("https://64.media.tumblr.com/ee5169a677d71323105a5210404f474d/tumblr_ptp22tbWHk1tgo74ho1_1280.gifv");
+  background-color: #101010;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+#sushi {
+  margin-bottom: 9px;
+}
+
+.col-md-3 {
+  align-items: center;
+  margin-top: 75px;
+  margin-bottom: 100px;
+  background-color: rgba(0, 0, 0, 0);
+  color: #fff;
+  border-color: #10101000;
+}
+
+.btn {
+  color: white;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-color: rgba(0, 128, 0, 0.72);
+  align-items: center;
+}
+
+.navbar {
+  background-color: #6a5862;
+}
+
+.title {
+  background-color: rgb(white);
+  color: black;
+  font-family: "Courier New", Courier, monospace;
+  color: #fff;
+  text-align: center;
+}
+
+.vote {
+  background-color: rgba(0, 0, 0, 0.753);
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.messageContainer {
+  background-color: #6a5862e8;
+  border-color: rgb(245, 193, 96);
+  margin-top: 75px;
+  margin-bottom: 25px;
+}

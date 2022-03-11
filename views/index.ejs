@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Voting App</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <nav class="navbar navbar-light">
+            <div class="container-fluid">
+              <a class="navbar-brand" style="color:white;" href="https://www.doordash.com/">H 🍔🍣 N G R Y ?</a>
+            </div>
+          </nav>
+        <div class="row">
+            <div class="col">
+            </div>
+            <div id="photoCard" class="votes col-md-3 card" style="width: 18rem;">
+                <img id="burger" src="<%= votes[0].srcUrl %>" class="card-img-top" alt="<%= votes[0].altText %>">
+                <div class="card-body vote">
+                <h5 class="card-title title"><%= votes[0].name %></h5>
+            </div>
+            <button id="vote-button" class="btn btn1" value="<%= votes[0].votes %>">Select</button>
+            </div>
+            <div class="col messageContainer" style="color:white; text-align: center;"> 
+                <h2><strong>C h o o s e </strong><br>a<br>m e a l</h2>
+                <h3 class="messageHeading"></h3>
+                <p class="message"></p>
+                <h4 id="messages" style="color: white;"></h4>
+            </div>
+            <div id="photoCard" class="votes2 col-md-3 card" style="width: 18rem;">
+                <img id="sushi" src="<%= votes[1].srcUrl %>" class="card-img-top" alt="<%= votes[1].altText %>">
+                <div class="card-body vote">
+                <h5 class="card-title2 title"><%= votes[1].name %></h5>
+            </div>
+            <button id="vote-button2" class="btn btn2" value="<%= votes[1].votes %>">Select</button>
+               </div>
+            <div class="col">
+            </div>
+        </div>
+        <script src="/socket.io/socket.io.js"></script>
+        <script>
+            const socket = io();
+            const updateSocket = document.querySelector('.votes');
+            const updateSocket2 = document.querySelector('.votes2');
+            const messages = document.getElementById('messages');
+            const msgHeader = document.getElementsByClassName('messageHeading')
+            const msg = document.getElementsByClassName('message')
+            const buttonOne = document.getElementsByClassName('btn1');;
+            const buttonTwo = document.getElementsByClassName('btn2');
+            let messageOne = buttonOne[0].getAttribute('value');
+            let messageTwo = buttonTwo[0].getAttribute('value');
+
+            let hasVote = localStorage.getItem("food photo");
+            let bothButton = document.getElementsByClassName('btn-primary');
+          
+            const totals = `${parseInt(buttonOne[0].getAttribute('value')) + parseInt(buttonTwo[0].getAttribute('value'))}`
+            const khalidGif = '<iframe src="https://giphy.com/embed/qgri3D9sTwCUGMcT8L" width="175" height="125" frameBorder="0" ></iframe>';
+            const jimmyGif = '<iframe src="https://giphy.com/embed/3o7TKstg89WSfUXIkM" width="175" height="125" frameBorder="0" ></iframe>';
+            const functionToDisappearInnerHTML= () => {
+                msgHeader[0].innerHTML = "";
+                msg[0].innerHTML = ""; 
+                messages.innerHTML = "";     
+            }
+            
+            if(!hasVote){
+                updateSocket.addEventListener('click', event => {
+                event.preventDefault();
+                if(messageOne){
+                    socket.emit('messages', `${khalidGif}<br> Live: total votes for 🍔 is ${messageOne}`);
+                    buttonOne[0].innerHTML = `Votes: ${button[0].getAttribute('value')} / ${totals}`
+                    socket.emit('votes', buttonOne[0].innerHTML );
+                }  
+                 socket.on('votes', (vote) => {
+                    buttonOne[0].innerHTML = vote
+                });
+            });
+         
+            updateSocket2.addEventListener('click', event => {
+                event.preventDefault();
+                if(messageTwo){
+                    socket.emit('messages', `${jimmyGif}<br> Live: total votes for 🍣 is ${messageTwo}`);
+                    buttonTwo[0].innerHTML = `Votes: ${buttonTwo[0].getAttribute('value')} / ${total}`
+                    socket.emit('votes2', buttonTwo[0].innerHTML );
+                }
+                socket.on('votes2', (vote) => {
+                    buttonTwo[0].innerHTML = vote
+                });
+            });
+       
+            } else { 
+                bothButton.disabled = true;
+            }
+            
+            socket.on('messages', message => {
+                messages.innerHTML = message;
+                setTimeout(functionToDisappearInnerHTML, 5000)
+            });
+          
+        </script>
+    </body>
+    <script src="main.js"></script>
+</html>
